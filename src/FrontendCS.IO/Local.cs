@@ -8,6 +8,7 @@ namespace FrontendCS.IO
         public static void CreateFile(string fileName, string contents)
         {
             VerifyFileName(fileName);
+            VerifyContents(contents);
             I_CreateFile(fileName, contents);
         }
 
@@ -26,6 +27,7 @@ namespace FrontendCS.IO
         public static void OverwriteFile(string fileName, string contents)
         {
             VerifyFileName(fileName);
+            VerifyContents(contents);
             I_OverwriteFile(fileName, contents);
         }
 
@@ -35,6 +37,7 @@ namespace FrontendCS.IO
         public static void AppendFile(string fileName, string contents)
         {
             VerifyFileName(fileName);
+            VerifyContents(contents);
             I_AppendFile(fileName, contents);
         }
 
@@ -48,6 +51,13 @@ namespace FrontendCS.IO
             if (String.IsNullOrWhiteSpace(fileName))
             {
                 throw new Exception("File name must not be null or empty!");
+            }
+        }
+        private static void VerifyContents(string contents)
+        {
+            if (contents == null)
+            {
+                throw new Exception("File contents must not be null!");
             }
         }
     }
